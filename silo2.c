@@ -8,7 +8,7 @@
 
 
 #include "mylib.h"
-
+#include "time.h"
 int main( void )
 
 {  
@@ -16,7 +16,7 @@ int main( void )
   int          iPlot = 0;            // Plot counter
   char         svgfile[20];          // File name for output
   double       ekin  = 0.0;          // Kinetic Energy
-
+   clock_t begin = clock(); 		// Begin clock
   int head[1176];
   int next[MAX_PARTICLES];
   
@@ -61,7 +61,9 @@ int main( void )
     }   
 	
   }
-
+  clock_t end = clock();	//end clock
+  double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;	//clock time
+  printf("Elapsed: %f seconds\n", time_spent); //Calculate computation time for the program
   return 0;
 }
 
